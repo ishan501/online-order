@@ -1,26 +1,123 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {Component} from 'react'
+import './App.css'
+import './bootstrap.min.css'
+import StepOne from './StepOne'
+import StepTwo from './StepTwo'
+import StepThree from './StepThree'
+import StepFour from "./StepFour"
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+    constructor(props) {
+        super(props)
+        this.goNext = this.goNext.bind(this)
+        this.goPrevious = this.goPrevious.bind(this)
+        this.confirmOrder = this.confirmOrder.bind(this)
+
+        this.state = {
+            currentStep: 1,
+            meal: '',
+            person: 1,
+            resto: '',
+            totalDishes: [{
+                dish: "",
+                quantity: 1
+            }],
+        }
+    }
+
+    handleChange = event => {
+        const {name, value} = event.target
+        this.setState({
+            [name]: value
+        })
+    }
+
+    handleAddDish = () => {
+        const item = {
+            dish: "",
+            quantity: 1
+        }
+
+        this.setState({
+            totalDishes: [...this.state.totalDishes, item]
+        })
+    }
+
+    handleRow = index => event => {
+        const {name, value} = event.target
+        const totalDishes = [...this.state.totalDishes];
+        totalDishes[index][name] = value
+
+        this.setState({
+            totalDishes
+        })
+    }
+
+    get previousBtn() {
+        if (this.state.currentStep !== 1) {
+            return (
+                <button onClick={this.goPrevious} className="btn btn-warning">Previous</button>
+            )
+        }
+
+        return null
+    }
+
+    get nextBtn() {
+        if (this.state.currentStep !== 4) {
+            return (
+                <button onClick={this.goNext} className="btn btn-primary next">Next</button>
+            )
+        } else if (this.state.currentStep === 4) {
+            return (
+                <button onClick={this.confirmOrder} className="btn btn-success next">Confirm Order</button>
+            )
+        }
+
+        return null
+    }
+
+    confirmOrder() {
+        alert('Order confirmed, check your console!')
+        console.log(this.state)
+    }
+
+    goNext() {
+        let currentStep = this.state.currentStep
+
+        currentStep = currentStep >= 4 ? 4 : currentStep + 1
+
+        this.setState({
+            currentStep: currentStep
+        })
+    }
+
+    goPrevious() {
+        let currentStep = this.state.currentStep
+        currentStep = currentStep <= 1 ? 1 : currentStep - 1
+
+        this.setState({
+            currentStep: currentStep
+        })
+
+    }
+
+    render() {
+        return (
+            <div className="App">
+                <header className="App-header">
+                    Order from your favourite restro
+                </header>
+                <label>Step {this.state.currentStep}/4</label>
+                <StepOne data={this.state} handleChange={this.handleChange}/>
+                <StepTwo data={this.state} handleChange={this.handleChange}/>
+                <StepThree data={this.state} handleAddDish={this.handleAddDish} handleRow={this.handleRow} removeRow={this.removeRow}/>
+                <StepFour data={this.state}/>
+                {this.previousBtn}
+                {this.nextBtn}
+            </div>
+        )
+    }
 }
 
 export default App;
