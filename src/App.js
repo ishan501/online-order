@@ -131,7 +131,7 @@ class App extends Component {
         return (
             <div className="App">
                 <header className="App-header">
-                    Order from your favourite restro
+                    <b>Swaggy</b>, order food from your favourite restro!
                 </header>
                 <label>Step {this.state.currentStep}/4</label>
                 <StepOne data={this.state} handleChange={this.handleChange}/>

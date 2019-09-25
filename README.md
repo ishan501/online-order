@@ -1,4 +1,4 @@
-## Online Order
+## Swaggy
 
 This app helps you order food from your favourite restaurants!
 
