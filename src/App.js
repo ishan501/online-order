@@ -12,6 +12,7 @@ class App extends Component {
         this.goNext = this.goNext.bind(this)
         this.goPrevious = this.goPrevious.bind(this)
         this.confirmOrder = this.confirmOrder.bind(this)
+        this.validateStep = this.validateStep.bind(this)
 
         this.state = {
             currentStep: 1,
@@ -22,6 +23,7 @@ class App extends Component {
                 dish: "",
                 quantity: 1
             }],
+            formIsValid: false
         }
     }
 
@@ -85,11 +87,34 @@ class App extends Component {
     goNext() {
         let currentStep = this.state.currentStep
 
+        this.validateStep(currentStep)
+
+        if (!this.state.formIsValid) {
+            alert('Please enter valid data')
+            return
+        }
+
+        this.state.formIsValid = false
+
         currentStep = currentStep >= 4 ? 4 : currentStep + 1
 
         this.setState({
             currentStep: currentStep
         })
+    }
+
+    validateStep = (currentStep) => {
+        switch (currentStep) {
+            case 1:
+                if(this.state.meal) this.state.formIsValid = true
+                break
+            case 2:
+                if (this.state.resto) this.state.formIsValid = true
+                break
+            case 3:
+                if (this.state.totalDishes[0].dish) this.state.formIsValid = true
+                break
+        }
     }
 
     goPrevious() {

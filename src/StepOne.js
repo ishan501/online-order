@@ -21,7 +21,7 @@ class StepOne extends Component {
                 </div>
                 <div className="form-group col-md-6 offset-3">
                     <label>Enter number of people</label>
-                    <input className="form-control" name="person" type="number" value={person} onChange={this.props.handleChange} />
+                    <input className="form-control" name="person" type="number" min={1} value={person} onChange={this.props.handleChange} />
                 </div>
             </div>
         )
