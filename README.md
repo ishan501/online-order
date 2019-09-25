@@ -6,5 +6,5 @@ Select meal type in the first step. Based on your choice, the app will filter th
 
 This app takes data from a JSON file.
 
-[Live demo](https://ishan501.github.io/online-order/)
+[Live demo](https://ishan501.github.io/Swaggy)
 
