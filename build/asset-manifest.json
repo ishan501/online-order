@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Swaggy/static/css/main.4f27059e.chunk.css",
+    "main.js": "/Swaggy/static/js/main.02aaa90a.chunk.js",
+    "main.js.map": "/Swaggy/static/js/main.02aaa90a.chunk.js.map",
+    "runtime~main.js": "/Swaggy/static/js/runtime~main.f96318c9.js",
+    "runtime~main.js.map": "/Swaggy/static/js/runtime~main.f96318c9.js.map",
+    "static/js/2.2900cbe3.chunk.js": "/Swaggy/static/js/2.2900cbe3.chunk.js",
+    "static/js/2.2900cbe3.chunk.js.map": "/Swaggy/static/js/2.2900cbe3.chunk.js.map",
+    "index.html": "/Swaggy/index.html",
+    "precache-manifest.5f60769deb6471f3110eee202fc38276.js": "/Swaggy/precache-manifest.5f60769deb6471f3110eee202fc38276.js",
+    "service-worker.js": "/Swaggy/service-worker.js",
+    "static/css/main.4f27059e.chunk.css.map": "/Swaggy/static/css/main.4f27059e.chunk.css.map"
+  }
+}
